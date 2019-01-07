@@ -32,6 +32,10 @@ client.user.setStatus("online")
 
 //-------------------------------------------------------------نهاية السورس الاساسي--------------------------------------------------------------------------------------------------------------
  
+client.on('ready', () => {
+ var x = client.channels.get("531718785376321536");
+ if (x) x.join();
+ });
 
 
 //--------------------------------------------------------
@@ -156,12 +160,6 @@ ${videos.map(video2 => `[**${++index}**] **${video2.title}**`).join('\n')}`)
         if (!msg.member.voiceChannel) return msg.channel.send('يجب تواجدك بروم صوتي | :x:');
         if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
         serverQueue.connection.dispatcher.end('تم تجآوز هذآ المقطع');
-        return undefined;
-    } else if (command === `stop`) {
-        if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
-        if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لإيقآفه');
-        serverQueue.songs = [];
-        serverQueue.connection.dispatcher.end('تم إيقآف هذآ المقطع');
         return undefined;
     } else if (command === `vol`) {
         if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
